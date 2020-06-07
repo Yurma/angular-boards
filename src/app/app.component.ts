@@ -10,11 +10,13 @@ export class AppComponent implements OnInit {
 
   currentItemIndex: number;
   title = 'angular-boards';
+  listAdd = false;
   lists = [
     {
       title: "To-Do",
       isEditing: false,
       itemEdit: null,
+      itemAdd: false,
       items: [
         {
           content: "One",
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit {
       title: "In progress",
       isEditing: false,
       itemEdit: null,
+      itemAdd: false,
       items: [
         {
           content: "Three",
@@ -48,6 +51,7 @@ export class AppComponent implements OnInit {
       title: "Complete",
       isEditing: false,
       itemEdit: null,
+      itemAdd: false,
       items: [
         {
           content: "Four",
@@ -85,6 +89,18 @@ export class AppComponent implements OnInit {
     this.lists[listId].itemEdit = itemId
   }
 
+  cancelItemEdit(listId) {
+    this.lists[listId].itemEdit = null
+  }
+
+  setItemAdd(listId) {
+    this.lists[listId].itemAdd = true
+  }
+
+  cancelItemAdd(listId) {
+    this.lists[listId].itemAdd = false
+  }
+
   onDrop(event: CdkDragDrop<string[]>) {
     if(event.previousContainer === event.container){
       moveItemInArray(this.lists[event.container.id].items[this.currentItemIndex], event.previousIndex, event.currentIndex)
@@ -99,11 +115,36 @@ export class AppComponent implements OnInit {
   }
 
   editItem(listId: number, itemId: number, labels: any, content: string) {
-    console.log(listId, itemId, labels, content)
     let item = this.lists[listId].items[itemId];
     item.labels = this.stringToList(labels);
     item.content = content;
     this.lists[listId].items[itemId] = item;
     this.lists[listId].itemEdit = null;
   }
+
+  addItem(listId: number, labels: any, content: string) {
+    this.lists[listId].items.push(
+      {
+        content: content,
+        labels: this.stringToList(labels)
+      }
+    )
+    
+    this.lists[listId].itemAdd = false
+  }
+
+  addList(title: string) {
+    this.lists.push(
+      {
+        title: title,
+        isEditing: false,
+        itemEdit: null,
+        itemAdd: false,
+        items: []
+      }
+    )
+
+    this.listAdd = false
+  }
+
 }
