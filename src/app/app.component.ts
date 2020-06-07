@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class AppComponent implements OnInit {
 
+  currentItemIndex: number;
   title = 'angular-boards';
   lists = [
     {
@@ -60,13 +61,29 @@ export class AppComponent implements OnInit {
     }
   ];
 
+  getConnectedList(): any[] {
+    console.log(this.lists.map((x, id) => id))
+    return this.lists.map((x, id) => id);
+  }
   
 
   ngOnInit() {
     
   }
 
+  overItem(id) {
+    this.currentItemIndex = id;
+  }
+
   onDrop(event: CdkDragDrop<string[]>) {
+    if(event.previousContainer === event.container){
+      moveItemInArray(this.lists[event.container.id].items[this.currentItemIndex], event.previousIndex, event.currentIndex)
+    } else {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
+    }
+  }
+
+  onDrag(event: CdkDragDrop<string[]>) {
     console.log(event)
   }
 }

@@ -1,13 +1,13 @@
 <div class="boards-container d-flex flex-auto flex-column clearfix position-relative no-wrap">
-  <div class="boards d-flex flex-auto flex-row p-sm-3 position-relative overflow-auto border-black">
-    <div class="list position-relative d-flex flex-auto flex-column overflow-hidden mr-3 v-align-top rounded-2 border ws-normal hide-sm" *ngFor="let list of lists"
-         cdkDropList
-         [cdkDropListData]="list"
-         (cdkDropListDropped)="onDrop($event)"
-         cdkDropListOrientation="horizontal">
+  <div cdkDropListGroup  class="boards d-flex flex-auto flex-row p-sm-3 position-relative overflow-auto border-black">
+    <div class="list position-relative d-flex flex-auto flex-column overflow-hidden mr-3 v-align-top rounded-2 border ws-normal hide-sm" *ngFor="let list of lists; let id = index">
       <div class="title">{{list.title}}</div>
-      <div class="itemList">
-        <div class="item flex-auto position-relative border m-2 mx-3" *ngFor="let item of list.items" cdkDrag> 
+      <div cdkDropList class="itemList"
+           id={{id}}
+           [cdkDropListData]="list.items"
+           (cdkDropListDropped)="onDrop($event)"
+      >
+        <div cdkDrag [cdkDragData]="item" class="item flex-auto position-relative border m-2 mx-3" *ngFor="let item of list.items"> 
           <div class="width-full">
             <div class="labels">
               <span class="label" *ngFor="let label of item.labels">{{label}}</span>
