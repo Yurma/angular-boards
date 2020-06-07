@@ -1,27 +1,39 @@
-# AngularBoards
+# Angular Boards
+*Still in development*
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+Angular boards is angular equivalent of [Boards](https://github.com/Yurma/boards)
 
-## Development server
+### [Live site](https://yurma.wtf/angular-boards)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Features
+--------
 
-## Code scaffolding
+Angular boards is still in the development and changes are certain. Current features:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Create new boards
+- Create new items 
+- Drop items to other boards
+- Edit items and boards
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Installation
+------------
 
-## Running unit tests
+Clone this repository and install dependencies with 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`npm install`
 
-## Running end-to-end tests
+And run it
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`npm start`
 
-## Further help
+Contribute
+----------
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Issue Tracker: https://github.com/Yurma/angular-boards/issues
+- Source Code: https://github.com/Yurma/angular-boards
+
+License
+-------
+
+The project is licensed under the MIT license.
