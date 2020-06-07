@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   lists = [
     {
       title: "To-Do",
+      isEditing: false,
+      itemEdit: null,
       items: [
         {
           content: "One",
@@ -30,6 +32,8 @@ export class AppComponent implements OnInit {
     },
     {
       title: "In progress",
+      isEditing: false,
+      itemEdit: null,
       items: [
         {
           content: "Three",
@@ -42,6 +46,8 @@ export class AppComponent implements OnInit {
     },
     {
       title: "Complete",
+      isEditing: false,
+      itemEdit: null,
       items: [
         {
           content: "Four",
@@ -75,6 +81,10 @@ export class AppComponent implements OnInit {
     this.currentItemIndex = id;
   }
 
+  setItemEdit(listId, itemId) {
+    this.lists[listId].itemEdit = itemId
+  }
+
   onDrop(event: CdkDragDrop<string[]>) {
     if(event.previousContainer === event.container){
       moveItemInArray(this.lists[event.container.id].items[this.currentItemIndex], event.previousIndex, event.currentIndex)
@@ -83,7 +93,17 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onDrag(event: CdkDragDrop<string[]>) {
-    console.log(event)
+  stringToList(labels: string){
+    let list = labels.split(/(?:,| )+/);
+    return list
+  }
+
+  editItem(listId: number, itemId: number, labels: any, content: string) {
+    console.log(listId, itemId, labels, content)
+    let item = this.lists[listId].items[itemId];
+    item.labels = this.stringToList(labels);
+    item.content = content;
+    this.lists[listId].items[itemId] = item;
+    this.lists[listId].itemEdit = null;
   }
 }

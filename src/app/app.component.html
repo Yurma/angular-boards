@@ -7,15 +7,23 @@
            [cdkDropListData]="list.items"
            (cdkDropListDropped)="onDrop($event)"
       >
-        <div cdkDrag [cdkDragData]="item" class="item flex-auto border m-2 mx-3" *ngFor="let item of list.items"> 
+        <div cdkDrag [cdkDragData]="item" class="item flex-auto border m-2 mx-3" *ngFor="let item of list.items; let i = index"> 
           <div class="width-full">
-            <div class="labels">
-              <span class="label" *ngFor="let label of item.labels">{{label}}</span>
+            <div *ngIf="list.itemEdit !== i">
+              <div class="labels">
+                <span class="label" *ngFor="let label of item.labels">{{label}}</span>
+              </div>
+              <div class="content px-2">
+                <p>{{item.content}}</p>
+              </div>
+              
+              <button class="edit btn btn-icon" (click)="setItemEdit(id, i)"><div class="gg-pen"></div></button>
             </div>
-            <div class="content px-2">
-              <p>{{item.content}}</p>
+            <div *ngIf="list.itemEdit === i">
+              <div class="edit-labels m-2"><input #labels class="width-full" value="{{item.labels}}"></div>
+              <div class="m-2"><textarea #content class="content">{{item.content}}</textarea></div>
+              <div class="m-2"><button class="btn btn-blue btn-squared d-block width-full" (click)="editItem(id, i, labels.value, content.value)">Edit</button></div>
             </div>
-            <button class="edit btn btn-icon"><div class="gg-pen"></div></button>
           </div>
         </div>
       </div>
