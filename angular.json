@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-boards"
+    }
+  },
+  "defaultProject": "angular-boards",
+  "cli": {
+    "analytics": "7ff8e65e-004f-4e00-a162-a3ca054a8a71"
+  }
 }
