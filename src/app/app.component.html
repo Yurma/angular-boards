@@ -7,7 +7,7 @@
            [cdkDropListData]="list.items"
            (cdkDropListDropped)="onDrop($event)"
       >
-        <div cdkDrag [cdkDragData]="item" class="item flex-auto position-relative border m-2 mx-3" *ngFor="let item of list.items"> 
+        <div cdkDrag [cdkDragData]="item" class="item flex-auto border m-2 mx-3" *ngFor="let item of list.items"> 
           <div class="width-full">
             <div class="labels">
               <span class="label" *ngFor="let label of item.labels">{{label}}</span>
