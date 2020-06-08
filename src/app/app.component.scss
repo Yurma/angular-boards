@@ -13,6 +13,10 @@
     min-height: 5px;
 } 
 
+.listList {
+    display: inherit;
+}
+
 .newBoard {
     min-width: 355px;
     max-width: 355px;
@@ -65,3 +69,4 @@
         }
     }
 }
+

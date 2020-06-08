@@ -14,7 +14,7 @@
                 <span class="label" *ngFor="let label of item.labels">{{label}}</span>
               </div>
               <div class="content px-2">
-                <p>{{item.content}}</p>
+                <p><markdown>{{item.content}}</markdown></p>
               </div>
               
               <button class="edit btn btn-icon" (click)="setItemEdit(id, i)"><div class="gg-pen"></div></button>

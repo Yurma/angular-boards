@@ -102,11 +102,17 @@ export class AppComponent implements OnInit {
   }
 
   onDrop(event: CdkDragDrop<string[]>) {
+    console.log(event)
     if(event.previousContainer === event.container){
       moveItemInArray(this.lists[event.container.id].items[this.currentItemIndex], event.previousIndex, event.currentIndex)
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
     }
+  }
+
+  onDropList(event: CdkDragDrop<string[]>) {
+    console.log(event)
+    moveItemInArray(this.lists, event.previousIndex, event.currentIndex);
   }
 
   stringToList(labels: string){
