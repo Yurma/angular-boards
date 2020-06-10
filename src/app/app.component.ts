@@ -72,8 +72,7 @@ export class AppComponent implements OnInit {
   ];
 
   getConnectedList(): any[] {
-    console.log(this.lists.map((x, id) => id))
-    return this.lists.map((x, id) => id);
+    return this.lists.map((x, id) => `${id}`);
   }
   
 
@@ -102,7 +101,6 @@ export class AppComponent implements OnInit {
   }
 
   onDrop(event: CdkDragDrop<string[]>) {
-    console.log(event)
     if(event.previousContainer === event.container){
       moveItemInArray(this.lists[event.container.id].items[this.currentItemIndex], event.previousIndex, event.currentIndex)
     } else {
@@ -111,7 +109,6 @@ export class AppComponent implements OnInit {
   }
 
   onDropList(event: CdkDragDrop<string[]>) {
-    console.log(event)
     moveItemInArray(this.lists, event.previousIndex, event.currentIndex);
   }
 

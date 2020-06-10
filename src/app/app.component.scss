@@ -1,13 +1,23 @@
 .list {
     min-width: 355px;
     max-width: 355px;
+    background-color: #ffffff;
 
     .title {
         text-align: center;
         font-weight: 600;
         margin: 2px;
+
+        &:hover {
+            background-color: #f0f0f0;
+            cursor: grab;
+        }
     }
 }
+
+.cdk-drag-dragging {
+    opacity: 0;
+  }
 
 .itemList {
     min-height: 5px;
@@ -36,6 +46,11 @@
     background-color: #ffffff;
     align-self: flex-start;
     padding: 2px;
+
+    &:hover {
+        background-color: #f6f6f6;
+        cursor: grab;
+    }
 
     ul {
         margin-left: 20px;
